@@ -1,6 +1,2 @@
 flask
 gunicorn
-random
-requests
-csv
-xml.etree.ElementTree
