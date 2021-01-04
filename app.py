@@ -10,7 +10,7 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/econ")
+@app.route("/economics")
 def econ():
     articles = []
 
@@ -23,27 +23,27 @@ def econ():
     url = 'http://export.arxiv.org/rss/econ'
     articles = articles + getArxivFeed(url)
 
-    return render_template("topic.html", topic='Economics', articles = articles)
+    return render_template("topic.html", topic='Economics', articles=articles)
 
 
-@app.route("/ml")
+@app.route("/machinelearning")
 def machineLearning():
     url = "https://jmlr.org/jmlr.xml"
     articles = getArticles(url)
-    return render_template("topic.html", topic='ML/AI', articles = articles)
+    return render_template("topic.html", topic='ML/AI', articles=articles)
 
 
-@app.route("/cs")
+@app.route("/computerscience")
 def computerScience():
     url = 'http://export.arxiv.org/rss/cs'
     articles = getArxivFeed(url)
-    return render_template("topic.html", topic='Computer Science', articles = articles)
+    return render_template("topic.html", topic='Computer Science', articles=articles)
 
 
 @app.route("/space")
 def space():
     images = getNasa()
-    return render_template("space.html", topic='Space' , images = images)
+    return render_template("space.html", topic='Space', images=images)
 
 
 @app.route('/', defaults={'path': ''})

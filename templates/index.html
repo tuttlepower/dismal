@@ -7,10 +7,20 @@
   <body>
     {% extends "template.html" %}
     {% block content %}
-    
-    <h1 class = "row justify-content-center align-self-center">Hello Word! </h1>
-    <p> Flask is Fun </p>
-    
+    <p>Currently an RSS feed that includes:</p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" >Various <a href="https://arxiv.org/">arXiv</a> streams</li>
+      <li class="list-group-item"><a href="https://www.bea.gov/">Bureau of Economic Analysis</a></li>
+      <li class="list-group-item"><a href="https://www.nber.org/">NBER</a></li>
+      <li class="list-group-item"><a href="https://jmlr.org/">Journal of Machine Learning Research
+      </a></li>
+    </ul>
+    <br>
+    <p>Hoping to add additonal functionalities, as well as a more robust backend. 
+      Currently pulling data each time a user goes to an endpoint, would like to store and serve a list of the links.
+      Would also like to build links that can take you directly to the page instead of their origin. Would give me an opportunity to try <a href="https://pythonhosted.org/Flask-Cache/">Flask-Cache
+      </a>.
+      </p>
     {% endblock %}
   </body>
 </html>

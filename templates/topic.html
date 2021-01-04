@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Home</title>
+  <title>{{topic}}</title>
 </head>
 
 <body>
@@ -23,20 +23,7 @@
     <br>
     {%endfor%}
   </div>
-
-  <div class="container">
-    <div class="card-columns">
-
-      {%for article in articles%}
-      <div class="card rounded">
-        <h5 class="card-header "><a href="{{article.link}}">{{article.title}}</a></h5>
-        <div class="card-body">{{article.description}}</div>
-        
-      </div>
-      {%endfor%}
-
-    </div>
-  </div>
+  
   {% endblock %}
 </body>
 
