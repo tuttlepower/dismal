@@ -43,6 +43,6 @@ url = 'http://export.arxiv.org/rss/econ'
 
 r = requests.get(url)
 root = ET.fromstring(r.text)
-
+root.getiterator
 for child in root:
-    print(child.getchildren())
+    print()
