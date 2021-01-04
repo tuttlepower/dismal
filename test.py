@@ -4,15 +4,41 @@ import csv
 import requests
 import xml.etree.ElementTree as ET
 
-url = "https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss"
+def getArxivFeed(url):
 
-r = requests.get(url)
+    r = requests.get(url)
+    root = ET.fromstring(r.text)
+    articles = []
 
-for line in r.text.split():
-    if ('thumbnails/image' in line):
-        line = line[5:-1]
-        print(line)
+    for x in root:
+        title = ""
+        link = ""
+        description = ""
 
-    if('description' in line):
-        print(line)
-    
+        for y in x:
+            if('title' in y.tag):
+                line = y.text.split(". ", 1)
+                line = line[0]
+                title = line
+
+            if('link' in y.tag):
+                link = y.text
+
+            if('description' in y.tag):
+                line = y.text[3:-5]
+                line = line.replace('<p>','')
+                line = line.replace('</p>','')
+                description = line
+
+        if(title != ""):
+            p = Paper.Paper(title, description, link)
+            articles.append(p)
+                
+    return articles
+
+url = 'http://export.arxiv.org/rss/econ'
+url = 'http://export.arxiv.org/rss/q-fin'
+articles = getArxivFeed(url)
+
+for article in articles:
+    print(article.link)

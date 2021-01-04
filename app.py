@@ -1,7 +1,7 @@
 from flask import Flask, render_template, session, redirect, url_for, request, jsonify
 import random
 import Paper
-from articleDAO import getArticles, getNasa
+from articleDAO import getArticles, getNasa, getArxivFeed
 app = Flask(__name__)
 
 
@@ -12,13 +12,16 @@ def home():
 
 @app.route("/econ")
 def econ():
+    articles = []
+
     url = "https://back.nber.org/rss/new.xml"
-    nber = getArticles(url)
+    articles = articles + getArticles(url)
 
     url = 'https://apps.bea.gov/rss/rss.xml'
-    bea = getArticles(url)
+    articles = articles + getArticles(url)
 
-    articles = bea + nber
+    url = 'http://export.arxiv.org/rss/econ'
+    articles = articles + getArxivFeed(url)
 
     return render_template("topic.html", topic='Economics', articles = articles)
 
@@ -32,7 +35,9 @@ def machineLearning():
 
 @app.route("/cs")
 def computerScience():
-    return render_template("topic.html", topic='Computer Science')
+    url = 'http://export.arxiv.org/rss/cs'
+    articles = getArxivFeed(url)
+    return render_template("topic.html", topic='Computer Science', articles = articles)
 
 
 @app.route("/space")
