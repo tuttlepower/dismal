@@ -17,13 +17,28 @@
         <h4 class="card-title"><a href="{{article.link}}">{{article.title}}</a></h4>
         <p class="card-text">{{article.description}}</p>
         <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+
+        {% if ('nber' in article.link): %}
+        <a href="#" class="card-link badge badge-warning">NBER</a>
+        {% endif %}
+
+        {% if ('arxiv' in article.link):%}
+        <a href="#" class="card-link badge badge-success">arxiv</a>
+        {% endif %}
+        
+        {% if ('bea' in article.link):%}
+        <a href="#" class="card-link badge badge-primary">BEA</a>
+        {% endif %}
+
+        {% if ('jmlr' in article.link):%}
+        <a href="#" class="card-link badge badge-info">JMLR</a>
+        {% endif %}
       </div>
     </div>
     <br>
     {%endfor%}
   </div>
-  
+
   {% endblock %}
 </body>
 

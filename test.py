@@ -37,8 +37,12 @@ def getArxivFeed(url):
     return articles
 
 url = 'http://export.arxiv.org/rss/econ'
-url = 'http://export.arxiv.org/rss/q-fin'
-articles = getArxivFeed(url)
+# url = 'http://export.arxiv.org/rss/q-fin'
+# articles = getArxivFeed(url)
 
-for article in articles:
-    print(article.link)
+
+r = requests.get(url)
+root = ET.fromstring(r.text)
+
+for child in root:
+    print(child.getchildren())
