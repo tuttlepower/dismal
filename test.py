@@ -38,11 +38,22 @@ def getArxivFeed(url):
 
 url = 'http://export.arxiv.org/rss/econ'
 # url = 'http://export.arxiv.org/rss/q-fin'
-# articles = getArxivFeed(url)
 
 
 r = requests.get(url)
 root = ET.fromstring(r.text)
-root.getiterator
-for child in root:
-    print()
+
+# for child in root:
+#     for node in child:
+#         print(child.tag + 
+#         "--" + node.tag)
+
+url = 'http://export.arxiv.org/api/query?search_query=all:electron&start=0&max_results=10'
+# r = requests.get(url)
+# root = ET.fromstring(r.text)
+# print(root.tag)
+
+articles = getArxivFeed(url)
+
+for x in articles:
+    print(x.title)
