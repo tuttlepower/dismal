@@ -26,11 +26,12 @@ class Article(db.Model):
     def to_string(self):
         return str(self.article)
 
+
 @app.route("/article", methods = ['GET'])
 def get_rand_article():
     #get # of articles as int
     max_number = db.session.query(func.max(Article.id)).scalar()
-
+    
     #grab random ID in range
     article_id = random.randint(0,max_number)
 
