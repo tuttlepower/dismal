@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Home</title>
-  </head>
-  <body>
-    {% extends "template.html" %}
-    {% block content %}
-    <p>Currently an RSS feed that includes:</p>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item" >Various <a href="https://arxiv.org/">arXiv</a> streams</li>
-      <li class="list-group-item"><a href="https://www.bea.gov/">Bureau of Economic Analysis</a></li>
-      <li class="list-group-item"><a href="https://www.nber.org/">NBER</a></li>
-      <li class="list-group-item"><a href="https://jmlr.org/">Journal of Machine Learning Research
-      </a></li>
-    </ul>
-    <br>
-    <p>Hoping to add additonal functionalities, as well as a more robust backend. 
-      Currently pulling data each time a user goes to an endpoint, would like to store and serve a list of the links.
-      Would also like to build links that can take you directly to the page instead of their origin. Would give me an opportunity to try <a href="https://pythonhosted.org/Flask-Cache/">Flask-Cache
-      </a>.
-      </p>
-    {% endblock %}
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+</head>
+
+<body>
+  {% extends "template.html" %}
+  {% block content %}
+
+  <div class="alert">
+    <h3 class="alert-heading">Good Evening</h4>
+      <p class="mb-0"> The time is currently 5:02 pm</p>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      {%for i in range(0, count)%}
+      <div class="col-sm-4">
+
+        <div class="card border-secondary mb-3 dark-mode-card">
+          <div class="card-header">Header {{i}}</div>
+          <div class="card-body">
+            <h4 class="card-title">Secondary card title</h4>
+            <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+
+      </div>
+      {%endfor%}
+
+    </div>
+  </div>
+  </div>
+  <script>
+    $("#btn2").on("click", function () {
+      $("#card").animate().css({
+        backgroundColor: "blue"
+      }, 2500);
+    });
+  </script>
+  {% endblock %}
+</body>
+
 </html>

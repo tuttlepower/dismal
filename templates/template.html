@@ -23,7 +23,7 @@
 
     <!-- minified Bootstrap Darkly -->
     <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
-    
+
     <!-- my Css -->
     <link rel="stylesheet" href="{{ url_for('static',filename='css/template.css') }}">
 
@@ -32,41 +32,58 @@
 
 <body>
     <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Dismal</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+                    aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <nav class="navbar bg-dark navbar-dark fixed-top navbar-expand-sm">
-            <a class="navbar-brand" href="/">Dismal</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="economics"><i class="far fa-chart-bar"></i> Economics</a>
-                    </li>
+                <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/">Home
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="economics"><i class="far fa-chart-bar"></i> Economics</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i
+                                    class="fas fa-laptop-code"></i> Technology
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="machinelearning">ML/AI</a>
+                                <a class="dropdown-item" href="computerscience">Computer Science</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="space"><i class="fas fa-rocket"></i> Space</a>
+                        </li>
+                    
+                    </ul>
 
-                    <!-- Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i
-                                class="fas fa-laptop-code"></i> Technology
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="machinelearning">ML/AI</a>
-                            <a class="dropdown-item" href="computerscience">Computer Science</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="space"><i class="fas fa-rocket"></i> Space</a>
-                    </li>
-                </ul>
+                    <div class="d-flex">
+                        <div class="nav-link navbar-brand" onclick="myFunction()"><i class="fas fa-adjust"> </i> </div>
+                    </div>
+                    
+
+                </div>
             </div>
         </nav>
-
+  
+  
     </header>
-    <br>
-    <br>
-    <br>
-    <br>
+
     <div class="container">
+        <script>
+            function myFunction() {
+                var element = document.body;
+                element.classList.toggle("dark-mode");
+            }
+        </script>
         {% block content %}
         {% endblock %}
     </div>
