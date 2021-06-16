@@ -25,69 +25,9 @@
     <link rel="stylesheet" href="static/css/template.css">
 
     <title>Dismal</title>
-    <style>
-        .fa {
-            padding: 20px;
-            font-size: 30px;
-            width: 50px;
-            text-align: center;
-            text-decoration: none;
-            margin: 5px 2px;
-        }
-
-        .fa:hover {
-            opacity: 0.7;
-        }
-
-        .fa-facebook {
-            
-            color: white;
-        }
-
-        .fa-twitter {
-            
-            color: white;
-        }
-
-        .fa-google {
-            
-            color: white;
-        }
-
-        .fa-linkedin {
-            
-            color: white;
-        }
-
-        .fa-youtube {
-            
-            color: white;
-        }
-
-        .fa-instagram {
-            
-            color: white;
-        }
-
-        .fa-snapchat-ghost {
-            
-            color: white;
-            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-        }
-
-        .fa-reddit {
-            
-            color: white;
-        }
-
-        .fa-rss {
-            
-            color: white;
-        }
-    </style>
 </head>
 
-<body>
+<body onload="startTime()">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light ">
             <div class="container-fluid">
@@ -103,16 +43,49 @@
                                 <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#economics"><i class="far fa-chart-bar"></i> Economics</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i
+                                    class="far fa-chart-bar"></i> Economics
+                            </a>
+                            <div class="dropdown-menu nav-item">
+                                <a class="dropdown-item" href="https://www.igmchicago.org/" target="_blank">
+                                    <i class="fas fa-chart-line">IGMChicago
+
+                                    </i>
+                                </a>
+                                <a class="dropdown-item" href="https://www.nber.org/" target="_blank">
+                                    <i class="fas fa-chart-area"> NBER</i>
+                                </a>
+                                <a class="dropdown-item" href="https://arxiv.org/list/econ/new" target="_blank">
+                                    <i class="fas fa-project-diagram"> Arxiv</i>
+                                </a>
+                                <a class="dropdown-item" href="https://fred.stlouisfed.org/" target="_blank">
+                                    <i class="fas fa-chart-pie"> FRED</i>
+                                </a>
+
+                            </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i
-                                    class="fas fa-laptop-code"></i> Technology
+                                    class="fas fa-laptop-code"></i> Links
                             </a>
                             <div class="dropdown-menu nav-item">
-                                <a class="dropdown-item" href="#machinelearning">ML/AI</a>
-                                <a class="dropdown-item" href="#computerscience">Computer Science</a>
+                                <a class="dropdown-item" href="https://www.twitter.com" target="_blank">
+                                    <div class="fa fa-twitter"> Twitter</div>
+                                </a>
+                                <a class="dropdown-item" href="https://www.linkedin.com" target="_blank">
+                                    <div class="fa fa-linkedin"> LinkedIn</div>
+                                </a>
+                                <a class="dropdown-item" href="https://www.youtube.com" target="_blank">
+                                    <div class="fa fa-youtube"> Youtube</div>
+                                </a>
+                                <a class="dropdown-item" href="https://www.instagram.com" target="_blank">
+                                    <div class="fa fa-instagram"> Instagram</div>
+                                </a>
+                                <a class="dropdown-item" href="https://www.reddit.com" target="_blank">
+                                    <div class="fa fa-reddit"> Reddit</div>
+                                </a>
+
                             </div>
                         </li>
                         <li class="nav-item">
@@ -140,26 +113,15 @@
                 <div id='greeting' />
                 </h4>
                 <div id='date'></div>
-
+                <div id="txt"></div>
                 <br>
-
-
                 <form class="d-flex">
                     <input class="form-control me-sm-2" type="text" placeholder="Search">
                     <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
                 </form>
 
-                
-                <div class="d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary"><a href="#" class="fa fa-twitter"></a></button>
-                    <button type="button" class="btn btn-primary"><a href="#" class="fa fa-google"></a></button>
-                    <button type="button" class="btn btn-primary"><a href="#" class="fa fa-linkedin"></a></button>
-                    <button type="button" class="btn btn-primary"><a href="#" class="fa fa-youtube"></a></button>
-                    <button type="button" class="btn btn-primary"><a href="#" class="fa fa-instagram"></a></button>
-                    <button type="button" class="btn btn-primary"><a href="#" class="fa fa-reddit"></a></button>
-    
 
-                </div>
+
 
                 <!-- <form action="https://www.google.com/search" class="d-flex searchform" method="get" name="searchform"
                     target="_blank">
@@ -191,6 +153,24 @@
     var d = new Date();
     document.getElementById("date").innerHTML = "The time is currently " + d.toLocaleTimeString();
 
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML = "The time is currently " +
+            h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 1000);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        }; // add zero in front of numbers < 10
+        return i;
+    }
     var curHr = d.getHours()
     if (curHr < 12) {
         document.getElementById("greeting").innerHTML = 'Good Morning';
