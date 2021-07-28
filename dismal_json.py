@@ -6,6 +6,8 @@ import json
 from datetime import datetime, timedelta
 
 # Paper Object
+
+
 class Paper:
     def __init__(self, title, description, link, date, source):
         self.title = title
@@ -23,17 +25,28 @@ class Paper:
             'Source': self.source
         }
 
+
 urls = []
+
 
 def getPaper(item):
     return 'Single Paper Object'
 
+
 def getPapersFromUrl(url):
     return "List of Papers from a single URL"
+
 
 def getPapersFromAllUrls():
     return "List of all Papers in reverse chronological order"
 
+
 def createJson():
-    return "Runs all of the above"
+    f = open("dismal-json.js", "w")
+    f.write('articles = [')
+    # f.write(json.dumps([article.toJson() for article in listOfArticles],indent=2))
+    f.write( ']')
+    f.close()
+
+createJson()
 
