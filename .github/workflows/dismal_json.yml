@@ -1,0 +1,26 @@
+name: Run Python File
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 13 * * *'
+
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out this repo
+      uses: actions/checkout@v2 # checkout the repository content to github runner.
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8 #install the python needed
+    - run: pip install -r requirements.txt
+    - name: Run hello_world.py
+      env:
+        CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+        CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+      run: python dismal_json.py
