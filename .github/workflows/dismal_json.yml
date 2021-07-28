@@ -19,3 +19,11 @@ jobs:
     - run: pip install -r requirements.txt
     - name: Run hello_world.py
       run: python dismal_json.py
+      
+    - name: commit files
+        run:|
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "update data" -a
+          git push
