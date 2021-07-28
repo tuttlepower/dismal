@@ -76,16 +76,15 @@ def getPapersFromAllUrls():
     return "List of all Papers in reverse chronological order"
 
 
-def createJson(article):
-    f = open("dismal-json.js", "a")
-    [f.write(article.__dict__()) for article in articles]
+def createJson(articles):
+    with open("dismal/data/dismal-json.js", "w") as f:
+        json.dump(articles, f, indent=4, sort_keys=True, default=str)
     f.close()
 
-
-# articles = getPapersFromUrl(url_list['MIT Econ'])
-# articles = [article for article in articles if article is not None]
+articles = getPapersFromUrl(url_list['MIT Econ'])
+articles = [article for article in articles if article is not None]
 # articles.sort(key=lambda x: x.date, reverse=True)
-
+articles = [article.__dict__() for article in articles]
 # for a in articles:
 #     print('title', a.title)
 #     print('description', a.description)
@@ -93,6 +92,6 @@ def createJson(article):
 #     print('date', a.date)
 
 # print([article.__dict__() for article in articles])
-# createJson(articles)
+createJson(articles)
 
 print('Fin')
