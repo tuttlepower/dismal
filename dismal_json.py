@@ -42,7 +42,7 @@ def getPapersFromAllUrls():
 
 
 def createJson():
-    f = open("dismal-json.js", "w")
+    f = open("dismal\dismal-json.js", "w")
     f.write('articles = [')
     # f.write(json.dumps([article.toJson() for article in listOfArticles],indent=2))
     f.write( ']')
