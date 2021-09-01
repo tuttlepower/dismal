@@ -1,33 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
-import AlertDismissible from './AlertDismissible';
-ReactDOM.render(<App />, document.getElementById('root'));
+import "./App.css";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Home from './components/Home';
+import About from './components/About';
 
+export const light = {
+  palette: {
+    type: "light",
+  },
+};
+export const dark = {
+  palette: {
+    type: "dark",
+  },
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button variant="primary">Primary</Button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <AlertDismissible />
-      </header>
-    </div>
-  );
+      <main>
+          <Switch>
+              <Route path="/" component={Home} exact />
+              <Route path="/about" component={About} />
+          </Switch>
+      </main>
+  )
 }
+
 export default App;
