@@ -15,18 +15,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8 #install the python needed
+        python-version: 3.12 #install the python needed
     - run: pip install -r requirements.txt
     - name: Run hello_world.py
       run: python dismal.py
-    - name: Open Web Client Directory
-      working-directory: src/webclient
-      run: |
-        ls -la  
-    - name: commit files
-      run: |-
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add -A
-        git commit -m "update data" -a
-        git push
