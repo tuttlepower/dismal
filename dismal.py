@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 
 import feedparser
 
@@ -22,10 +22,19 @@ def fetch_feed(url):
             "link": entry.get("link", ""),
             "published": entry.get("published", "")
         })
+
+    error = None
+    if getattr(feed, "bozo", False):
+        error = str(getattr(feed, "bozo_exception", ""))
+    if hasattr(feed, "status") and feed.status != 200:
+        status_err = f"status {feed.status}"
+        error = f"{error}; {status_err}" if error else status_err
+
     return {
         "source": feed.feed.get("title", url),
         "url": url,
-        "entries": entries
+        "entries": entries,
+        "error": error,
     }
 
 
@@ -33,12 +42,19 @@ def main():
     sources = load_sources()
     aggregated = []
     for url in sources:
+        print(f"Fetching {url}")
         try:
-            aggregated.append(fetch_feed(url))
+            feed = fetch_feed(url)
+            aggregated.append(feed)
+            if feed.get("error"):
+                print(f"  Error: {feed['error']}")
+            else:
+                print(f"  {len(feed['entries'])} entries")
         except Exception as exc:
-            aggregated.append({"source": url, "error": str(exc), "entries": []})
+            print(f"Failed to fetch {url}: {exc}")
+            aggregated.append({"source": url, "url": url, "entries": [], "error": str(exc)})
     with open(OUTPUT_FILE, "w") as f:
-        json.dump({"generated": datetime.utcnow().isoformat() + "Z", "feeds": aggregated}, f, indent=2)
+        json.dump({"generated": datetime.now(timezone.utc).isoformat(), "feeds": aggregated}, f, indent=2)
 
 
 if __name__ == "__main__":

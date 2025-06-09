@@ -5,7 +5,13 @@ Dismal is a lightweight RSS aggregator focused on quantitative finance, trading 
 ## Usage
 1. Install dependencies with `pip install -r requirements.txt`.
 2. Run `python dismal.py` to generate `data.json`.
-3. Open `index.html` in a browser to view the latest items.
+   The script prints progress as it fetches each feed. If a feed cannot be
+   retrieved, an error message is stored in the JSON file.
+3. Open `index.html` in a browser to view the latest items. Any per-feed
+   errors will be displayed above the entries.
+
+Network restrictions may prevent the script from downloading feeds. In that
+case the JSON will contain error messages rather than entries.
 
 ## Feed Sources
 A sample of the current feeds is listed below:
