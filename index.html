@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dismal Aggregator</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+.card { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 4px; }
+h2 { margin-top: 1.5em; }
+</style>
+</head>
+<body>
+<h1>Dismal Aggregator</h1>
+<div id="content">Loading...</div>
+<script>
+fetch('data.json')
+  .then(r => r.json())
+  .then(data => {
+    const container = document.getElementById('content');
+    container.textContent = '';
+    data.feeds.forEach(feed => {
+      const header = document.createElement('h2');
+      header.textContent = feed.source;
+      container.appendChild(header);
+      if (feed.error) {
+        const err = document.createElement('div');
+        err.textContent = 'Error: ' + feed.error;
+        container.appendChild(err);
+      }
+      feed.entries.forEach(entry => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<a href="${entry.link}" target="_blank">${entry.title}</a>` +
+                         `<div>${entry.published || ''}</div>`;
+        container.appendChild(card);
+      });
+    });
+  })
+  .catch(err => {
+    document.getElementById('content').textContent = 'Failed to load data.';
+    console.error(err);
+  });
+</script>
+</body>
+</html>
