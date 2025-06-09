@@ -1,0 +1,165 @@
+{
+  "generated": "2025-06-09T19:10:09.582693Z",
+  "feeds": [
+    {
+      "source": "https://back.nber.org/rss/new.xml",
+      "url": "https://back.nber.org/rss/new.xml",
+      "entries": []
+    },
+    {
+      "source": "http://export.arxiv.org/rss/econ",
+      "url": "http://export.arxiv.org/rss/econ",
+      "entries": []
+    },
+    {
+      "source": "http://export.arxiv.org/rss/cs",
+      "url": "http://export.arxiv.org/rss/cs",
+      "entries": []
+    },
+    {
+      "source": "http://export.arxiv.org/rss/q-fin",
+      "url": "http://export.arxiv.org/rss/q-fin",
+      "entries": []
+    },
+    {
+      "source": "https://arxiv.org/help/rss",
+      "url": "https://arxiv.org/help/rss",
+      "entries": []
+    },
+    {
+      "source": "https://back.nber.org/rss/releases.xml",
+      "url": "https://back.nber.org/rss/releases.xml",
+      "entries": []
+    },
+    {
+      "source": "https://netflixtechblog.com/feed",
+      "url": "https://netflixtechblog.com/feed",
+      "entries": []
+    },
+    {
+      "source": "https://eng.lyft.com/feed",
+      "url": "https://eng.lyft.com/feed",
+      "entries": []
+    },
+    {
+      "source": "https://engineering.atspotify.com/rss",
+      "url": "https://engineering.atspotify.com/rss",
+      "entries": []
+    },
+    {
+      "source": "https://engineering.fb.com/rss",
+      "url": "https://engineering.fb.com/rss",
+      "entries": []
+    },
+    {
+      "source": "https://medium.com/feed/airbnb-engineering",
+      "url": "https://medium.com/feed/airbnb-engineering",
+      "entries": []
+    },
+    {
+      "source": "https://github.blog/feed",
+      "url": "https://github.blog/feed",
+      "entries": []
+    },
+    {
+      "source": "https://stackoverflow.blog/feed",
+      "url": "https://stackoverflow.blog/feed",
+      "entries": []
+    },
+    {
+      "source": "https://slack.engineering/feed",
+      "url": "https://slack.engineering/feed",
+      "entries": []
+    },
+    {
+      "source": "https://medium.com/feed/draftkings-engineering",
+      "url": "https://medium.com/feed/draftkings-engineering",
+      "entries": []
+    },
+    {
+      "source": "https://medium.com/feed/fanduel-life/tagged/engineering",
+      "url": "https://medium.com/feed/fanduel-life/tagged/engineering",
+      "entries": []
+    },
+    {
+      "source": "https://hnrss.org/frontpage",
+      "url": "https://hnrss.org/frontpage",
+      "entries": []
+    },
+    {
+      "source": "https://feeds.npr.org/1019/rss.xml",
+      "url": "https://feeds.npr.org/1019/rss.xml",
+      "entries": []
+    },
+    {
+      "source": "https://ir.thomsonreuters.com/rss/news-releases.xml?items=15",
+      "url": "https://ir.thomsonreuters.com/rss/news-releases.xml?items=15",
+      "entries": []
+    },
+    {
+      "source": "https://feeds.bloomberg.com/markets/news.rss",
+      "url": "https://feeds.bloomberg.com/markets/news.rss",
+      "entries": []
+    },
+    {
+      "source": "https://feeds.bloomberg.com/politics/news.rss",
+      "url": "https://feeds.bloomberg.com/politics/news.rss",
+      "entries": []
+    },
+    {
+      "source": "https://feeds.bloomberg.com/technology/news.rss",
+      "url": "https://feeds.bloomberg.com/technology/news.rss",
+      "entries": []
+    },
+    {
+      "source": "https://feeds.bloomberg.com/wealth/news.rss",
+      "url": "https://feeds.bloomberg.com/wealth/news.rss",
+      "entries": []
+    },
+    {
+      "source": "https://fredblog.stlouisfed.org/feed",
+      "url": "https://fredblog.stlouisfed.org/feed",
+      "entries": []
+    },
+    {
+      "source": "https://www.jmlr.org/jmlr.xml",
+      "url": "https://www.jmlr.org/jmlr.xml",
+      "entries": []
+    },
+    {
+      "source": "https://www.sec.gov/rss/litigation/suspensions.xml",
+      "url": "https://www.sec.gov/rss/litigation/suspensions.xml",
+      "entries": []
+    },
+    {
+      "source": "https://www.jpl.nasa.gov/feeds/news/",
+      "url": "https://www.jpl.nasa.gov/feeds/news/",
+      "entries": []
+    },
+    {
+      "source": "https://www.nasa.gov/feeds/iotd-feed/",
+      "url": "https://www.nasa.gov/feeds/iotd-feed/",
+      "entries": []
+    },
+    {
+      "source": "https://www.nasa.gov/technology/feed/",
+      "url": "https://www.nasa.gov/technology/feed/",
+      "entries": []
+    },
+    {
+      "source": "https://www.federalreserve.gov/feeds/cp_rates.htm",
+      "url": "https://www.federalreserve.gov/feeds/cp_rates.htm",
+      "entries": []
+    },
+    {
+      "source": "https://www.federalreserve.gov/feeds/Data/CP_RATES_RIFSPPNAAD01_N.B.xml",
+      "url": "https://www.federalreserve.gov/feeds/Data/CP_RATES_RIFSPPNAAD01_N.B.xml",
+      "entries": []
+    },
+    {
+      "source": "https://www.natesilver.net/feed",
+      "url": "https://www.natesilver.net/feed",
+      "entries": []
+    }
+  ]
+}
