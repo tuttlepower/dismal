@@ -1,165 +1,160 @@
 {
-  "generated": "2025-06-09T19:10:09.582693Z",
-  "feeds": [
-    {
-      "source": "https://back.nber.org/rss/new.xml",
-      "url": "https://back.nber.org/rss/new.xml",
-      "entries": []
+  "generated": "2026-02-02T18:45:00.000000+00:00",
+  "metrics": {
+    "spy": {
+      "name": "S&P 500 ETF (SPY)",
+      "unit": "USD",
+      "description": "SPDR S&P 500 ETF Trust",
+      "ticker": "SPY",
+      "data": [
+        [1706745600000, 485.50], [1706832000000, 487.20], [1706918400000, 489.10],
+        [1707004800000, 491.30], [1707264000000, 493.50], [1707350400000, 495.80],
+        [1707436800000, 498.20], [1707523200000, 500.10], [1707782400000, 502.40],
+        [1707868800000, 504.70], [1707955200000, 507.00], [1708041600000, 509.30],
+        [1708300800000, 511.60], [1708387200000, 513.90], [1708473600000, 516.20],
+        [1708560000000, 518.50], [1708819200000, 520.80], [1708905600000, 523.10],
+        [1708992000000, 525.40], [1709078400000, 527.70], [1709337600000, 530.00],
+        [1709424000000, 532.30], [1709510400000, 534.60], [1709596800000, 536.90],
+        [1738281600000, 595.20], [1738368000000, 598.40], [1738454400000, 601.80]
+      ],
+      "latest": 601.80,
+      "change_1d_pct": 0.57,
+      "change_1w_pct": 1.24,
+      "change_1m_pct": 3.85
     },
-    {
-      "source": "http://export.arxiv.org/rss/econ",
-      "url": "http://export.arxiv.org/rss/econ",
-      "entries": []
+    "btc": {
+      "name": "Bitcoin",
+      "unit": "USD",
+      "description": "Bitcoin USD",
+      "ticker": "BTC-USD",
+      "data": [
+        [1706745600000, 42150.00], [1706832000000, 42890.00], [1706918400000, 43210.00],
+        [1707004800000, 43680.00], [1707264000000, 44120.00], [1707350400000, 45230.00],
+        [1707436800000, 46180.00], [1707523200000, 47350.00], [1707782400000, 48920.00],
+        [1707868800000, 50120.00], [1707955200000, 51340.00], [1708041600000, 52180.00],
+        [1708300800000, 51890.00], [1708387200000, 52450.00], [1708473600000, 53120.00],
+        [1708560000000, 54320.00], [1708819200000, 55890.00], [1708905600000, 57120.00],
+        [1708992000000, 58340.00], [1709078400000, 59780.00], [1709337600000, 61230.00],
+        [1709424000000, 62890.00], [1709510400000, 64120.00], [1709596800000, 65340.00],
+        [1738281600000, 102450.00], [1738368000000, 103890.00], [1738454400000, 105230.00]
+      ],
+      "latest": 105230.00,
+      "change_1d_pct": 1.29,
+      "change_1w_pct": 4.52,
+      "change_1m_pct": 12.35
     },
-    {
-      "source": "http://export.arxiv.org/rss/cs",
-      "url": "http://export.arxiv.org/rss/cs",
-      "entries": []
+    "treasury_10y": {
+      "name": "10-Year Treasury Yield",
+      "unit": "%",
+      "description": "CBOE 10-Year Treasury Note Yield Index",
+      "ticker": "^TNX",
+      "data": [
+        [1706745600000, 4.12], [1706832000000, 4.15], [1706918400000, 4.18],
+        [1707004800000, 4.21], [1707264000000, 4.19], [1707350400000, 4.22],
+        [1707436800000, 4.25], [1707523200000, 4.28], [1707782400000, 4.31],
+        [1707868800000, 4.29], [1707955200000, 4.32], [1708041600000, 4.35],
+        [1708300800000, 4.38], [1708387200000, 4.36], [1708473600000, 4.39],
+        [1708560000000, 4.42], [1708819200000, 4.45], [1708905600000, 4.43],
+        [1708992000000, 4.46], [1709078400000, 4.49], [1709337600000, 4.52],
+        [1709424000000, 4.50], [1709510400000, 4.53], [1709596800000, 4.56],
+        [1738281600000, 4.48], [1738368000000, 4.51], [1738454400000, 4.54]
+      ],
+      "latest": 4.54,
+      "change_1d_pct": 0.67,
+      "change_1w_pct": 1.12,
+      "change_1m_pct": 2.48
     },
-    {
-      "source": "http://export.arxiv.org/rss/q-fin",
-      "url": "http://export.arxiv.org/rss/q-fin",
-      "entries": []
+    "treasury_2y": {
+      "name": "13-Week Treasury Bill",
+      "unit": "%",
+      "description": "CBOE 13-Week Treasury Bill Index (proxy for short-term rates)",
+      "ticker": "^IRX",
+      "data": [
+        [1706745600000, 5.38], [1706832000000, 5.36], [1706918400000, 5.34],
+        [1707004800000, 5.32], [1707264000000, 5.30], [1707350400000, 5.28],
+        [1707436800000, 5.26], [1707523200000, 5.24], [1707782400000, 5.22],
+        [1707868800000, 5.20], [1707955200000, 5.18], [1708041600000, 5.16],
+        [1708300800000, 5.14], [1708387200000, 5.12], [1708473600000, 5.10],
+        [1708560000000, 5.08], [1708819200000, 5.06], [1708905600000, 5.04],
+        [1708992000000, 5.02], [1709078400000, 5.00], [1709337600000, 4.98],
+        [1709424000000, 4.96], [1709510400000, 4.94], [1709596800000, 4.92],
+        [1738281600000, 4.32], [1738368000000, 4.30], [1738454400000, 4.28]
+      ],
+      "latest": 4.28,
+      "change_1d_pct": -0.46,
+      "change_1w_pct": -1.15,
+      "change_1m_pct": -3.82
     },
-    {
-      "source": "https://arxiv.org/help/rss",
-      "url": "https://arxiv.org/help/rss",
-      "entries": []
+    "gold": {
+      "name": "Gold",
+      "unit": "USD",
+      "description": "Gold Futures",
+      "ticker": "GC=F",
+      "data": [
+        [1706745600000, 2025.30], [1706832000000, 2031.20], [1706918400000, 2028.50],
+        [1707004800000, 2035.80], [1707264000000, 2042.10], [1707350400000, 2038.70],
+        [1707436800000, 2045.30], [1707523200000, 2051.90], [1707782400000, 2048.60],
+        [1707868800000, 2055.20], [1707955200000, 2061.80], [1708041600000, 2058.40],
+        [1708300800000, 2065.00], [1708387200000, 2071.60], [1708473600000, 2068.20],
+        [1708560000000, 2074.80], [1708819200000, 2081.40], [1708905600000, 2078.00],
+        [1708992000000, 2084.60], [1709078400000, 2091.20], [1709337600000, 2087.80],
+        [1709424000000, 2094.40], [1709510400000, 2101.00], [1709596800000, 2097.60],
+        [1738281600000, 2785.40], [1738368000000, 2798.20], [1738454400000, 2812.50]
+      ],
+      "latest": 2812.50,
+      "change_1d_pct": 0.51,
+      "change_1w_pct": 1.89,
+      "change_1m_pct": 5.24
     },
-    {
-      "source": "https://back.nber.org/rss/releases.xml",
-      "url": "https://back.nber.org/rss/releases.xml",
-      "entries": []
+    "vix": {
+      "name": "VIX (Volatility Index)",
+      "unit": "Index",
+      "description": "CBOE Volatility Index - market fear gauge",
+      "ticker": "^VIX",
+      "data": [
+        [1706745600000, 13.20], [1706832000000, 13.85], [1706918400000, 14.10],
+        [1707004800000, 13.65], [1707264000000, 13.40], [1707350400000, 14.25],
+        [1707436800000, 14.80], [1707523200000, 14.35], [1707782400000, 13.90],
+        [1707868800000, 14.55], [1707955200000, 15.20], [1708041600000, 14.75],
+        [1708300800000, 14.30], [1708387200000, 14.95], [1708473600000, 15.60],
+        [1708560000000, 15.15], [1708819200000, 14.70], [1708905600000, 15.35],
+        [1708992000000, 16.00], [1709078400000, 15.55], [1709337600000, 15.10],
+        [1709424000000, 15.75], [1709510400000, 16.40], [1709596800000, 15.95],
+        [1738281600000, 15.85], [1738368000000, 16.20], [1738454400000, 15.42]
+      ],
+      "latest": 15.42,
+      "change_1d_pct": -4.81,
+      "change_1w_pct": -2.12,
+      "change_1m_pct": 3.28
     },
-    {
-      "source": "https://netflixtechblog.com/feed",
-      "url": "https://netflixtechblog.com/feed",
-      "entries": []
-    },
-    {
-      "source": "https://eng.lyft.com/feed",
-      "url": "https://eng.lyft.com/feed",
-      "entries": []
-    },
-    {
-      "source": "https://engineering.atspotify.com/rss",
-      "url": "https://engineering.atspotify.com/rss",
-      "entries": []
-    },
-    {
-      "source": "https://engineering.fb.com/rss",
-      "url": "https://engineering.fb.com/rss",
-      "entries": []
-    },
-    {
-      "source": "https://medium.com/feed/airbnb-engineering",
-      "url": "https://medium.com/feed/airbnb-engineering",
-      "entries": []
-    },
-    {
-      "source": "https://github.blog/feed",
-      "url": "https://github.blog/feed",
-      "entries": []
-    },
-    {
-      "source": "https://stackoverflow.blog/feed",
-      "url": "https://stackoverflow.blog/feed",
-      "entries": []
-    },
-    {
-      "source": "https://slack.engineering/feed",
-      "url": "https://slack.engineering/feed",
-      "entries": []
-    },
-    {
-      "source": "https://medium.com/feed/draftkings-engineering",
-      "url": "https://medium.com/feed/draftkings-engineering",
-      "entries": []
-    },
-    {
-      "source": "https://medium.com/feed/fanduel-life/tagged/engineering",
-      "url": "https://medium.com/feed/fanduel-life/tagged/engineering",
-      "entries": []
-    },
-    {
-      "source": "https://hnrss.org/frontpage",
-      "url": "https://hnrss.org/frontpage",
-      "entries": []
-    },
-    {
-      "source": "https://feeds.npr.org/1019/rss.xml",
-      "url": "https://feeds.npr.org/1019/rss.xml",
-      "entries": []
-    },
-    {
-      "source": "https://ir.thomsonreuters.com/rss/news-releases.xml?items=15",
-      "url": "https://ir.thomsonreuters.com/rss/news-releases.xml?items=15",
-      "entries": []
-    },
-    {
-      "source": "https://feeds.bloomberg.com/markets/news.rss",
-      "url": "https://feeds.bloomberg.com/markets/news.rss",
-      "entries": []
-    },
-    {
-      "source": "https://feeds.bloomberg.com/politics/news.rss",
-      "url": "https://feeds.bloomberg.com/politics/news.rss",
-      "entries": []
-    },
-    {
-      "source": "https://feeds.bloomberg.com/technology/news.rss",
-      "url": "https://feeds.bloomberg.com/technology/news.rss",
-      "entries": []
-    },
-    {
-      "source": "https://feeds.bloomberg.com/wealth/news.rss",
-      "url": "https://feeds.bloomberg.com/wealth/news.rss",
-      "entries": []
-    },
-    {
-      "source": "https://fredblog.stlouisfed.org/feed",
-      "url": "https://fredblog.stlouisfed.org/feed",
-      "entries": []
-    },
-    {
-      "source": "https://www.jmlr.org/jmlr.xml",
-      "url": "https://www.jmlr.org/jmlr.xml",
-      "entries": []
-    },
-    {
-      "source": "https://www.sec.gov/rss/litigation/suspensions.xml",
-      "url": "https://www.sec.gov/rss/litigation/suspensions.xml",
-      "entries": []
-    },
-    {
-      "source": "https://www.jpl.nasa.gov/feeds/news/",
-      "url": "https://www.jpl.nasa.gov/feeds/news/",
-      "entries": []
-    },
-    {
-      "source": "https://www.nasa.gov/feeds/iotd-feed/",
-      "url": "https://www.nasa.gov/feeds/iotd-feed/",
-      "entries": []
-    },
-    {
-      "source": "https://www.nasa.gov/technology/feed/",
-      "url": "https://www.nasa.gov/technology/feed/",
-      "entries": []
-    },
-    {
-      "source": "https://www.federalreserve.gov/feeds/cp_rates.htm",
-      "url": "https://www.federalreserve.gov/feeds/cp_rates.htm",
-      "entries": []
-    },
-    {
-      "source": "https://www.federalreserve.gov/feeds/Data/CP_RATES_RIFSPPNAAD01_N.B.xml",
-      "url": "https://www.federalreserve.gov/feeds/Data/CP_RATES_RIFSPPNAAD01_N.B.xml",
-      "entries": []
-    },
-    {
-      "source": "https://www.natesilver.net/feed",
-      "url": "https://www.natesilver.net/feed",
-      "entries": []
+    "dxy": {
+      "name": "US Dollar Index",
+      "unit": "Index",
+      "description": "US Dollar Index - dollar strength",
+      "ticker": "DX-Y.NYB",
+      "data": [
+        [1706745600000, 103.25], [1706832000000, 103.48], [1706918400000, 103.72],
+        [1707004800000, 103.95], [1707264000000, 104.18], [1707350400000, 104.42],
+        [1707436800000, 104.65], [1707523200000, 104.88], [1707782400000, 105.12],
+        [1707868800000, 104.85], [1707955200000, 105.08], [1708041600000, 105.32],
+        [1708300800000, 105.55], [1708387200000, 105.28], [1708473600000, 105.52],
+        [1708560000000, 105.75], [1708819200000, 105.98], [1708905600000, 105.72],
+        [1708992000000, 105.95], [1709078400000, 106.18], [1709337600000, 106.42],
+        [1709424000000, 106.15], [1709510400000, 106.38], [1709596800000, 106.62],
+        [1738281600000, 108.25], [1738368000000, 108.52], [1738454400000, 108.78]
+      ],
+      "latest": 108.78,
+      "change_1d_pct": 0.24,
+      "change_1w_pct": 0.89,
+      "change_1m_pct": 2.15
     }
-  ]
+  },
+  "summary": {
+    "yield_spread": {
+      "spread": 0.26,
+      "inverted": false,
+      "description": "10Y minus 13W Treasury yield. Negative = inverted yield curve (recession signal)"
+    }
+  },
+  "errors": null
 }
