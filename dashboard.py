@@ -1,60 +1,20 @@
 #!/usr/bin/env python3
 """
-Economic Dashboard - Fetches market and economic data for visualization.
+Economic Dashboard - Fetches market data for visualization.
 
-Data Sources:
-- Yahoo Finance (via yfinance): SPY, BTC-USD
-- FRED API: CPI, Unemployment, Job Openings, Treasury Yields
-
-Requires FRED_API_KEY environment variable (free from https://fred.stlouisfed.org/docs/api/api_key.html)
+All data sourced from Yahoo Finance via yfinance (no API key required).
 """
 
 import json
-import os
 from datetime import datetime, timezone
 
 import yfinance as yf
-from fredapi import Fred
 
 OUTPUT_FILE = "data.json"
-HISTORY_PERIOD = "2y"  # 2 years of history for market data
+HISTORY_PERIOD = "2y"  # 2 years of history
 
-# FRED series IDs
-FRED_SERIES = {
-    "cpi": {
-        "id": "CPIAUCSL",
-        "name": "CPI (Consumer Price Index)",
-        "unit": "Index",
-        "description": "Consumer Price Index for All Urban Consumers"
-    },
-    "unemployment": {
-        "id": "UNRATE",
-        "name": "Unemployment Rate",
-        "unit": "%",
-        "description": "Civilian Unemployment Rate"
-    },
-    "job_openings": {
-        "id": "JTSJOL",
-        "name": "Job Openings (JOLTS)",
-        "unit": "Thousands",
-        "description": "Job Openings: Total Nonfarm"
-    },
-    "treasury_10y": {
-        "id": "DGS10",
-        "name": "10-Year Treasury Yield",
-        "unit": "%",
-        "description": "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity"
-    },
-    "treasury_2y": {
-        "id": "DGS2",
-        "name": "2-Year Treasury Yield",
-        "unit": "%",
-        "description": "Market Yield on U.S. Treasury Securities at 2-Year Constant Maturity"
-    },
-}
-
-# Yahoo Finance tickers
-MARKET_TICKERS = {
+# All data from Yahoo Finance - no API keys needed
+TICKERS = {
     "spy": {
         "ticker": "SPY",
         "name": "S&P 500 ETF (SPY)",
@@ -67,64 +27,88 @@ MARKET_TICKERS = {
         "unit": "USD",
         "description": "Bitcoin USD"
     },
+    "treasury_10y": {
+        "ticker": "^TNX",
+        "name": "10-Year Treasury Yield",
+        "unit": "%",
+        "description": "CBOE 10-Year Treasury Note Yield Index"
+    },
+    "treasury_2y": {
+        "ticker": "^IRX",
+        "name": "13-Week Treasury Bill",
+        "unit": "%",
+        "description": "CBOE 13-Week Treasury Bill Index (proxy for short-term rates)"
+    },
+    "gold": {
+        "ticker": "GC=F",
+        "name": "Gold",
+        "unit": "USD",
+        "description": "Gold Futures"
+    },
+    "vix": {
+        "ticker": "^VIX",
+        "name": "VIX (Volatility Index)",
+        "unit": "Index",
+        "description": "CBOE Volatility Index - market fear gauge"
+    },
+    "dxy": {
+        "ticker": "DX-Y.NYB",
+        "name": "US Dollar Index",
+        "unit": "Index",
+        "description": "US Dollar Index - dollar strength"
+    },
 }
 
 
-def fetch_market_data(ticker_config):
-    """Fetch historical market data from Yahoo Finance."""
-    ticker = yf.Ticker(ticker_config["ticker"])
+def fetch_ticker_data(config):
+    """Fetch historical data from Yahoo Finance."""
+    ticker = yf.Ticker(config["ticker"])
     hist = ticker.history(period=HISTORY_PERIOD)
+
+    if hist.empty:
+        raise ValueError(f"No data returned for {config['ticker']}")
 
     # Convert to list of [timestamp_ms, close_price]
     data = []
     for date, row in hist.iterrows():
         timestamp_ms = int(date.timestamp() * 1000)
-        data.append([timestamp_ms, round(row["Close"], 2)])
+        value = row["Close"]
+        # Treasury yields from Yahoo are already in percentage points
+        data.append([timestamp_ms, round(float(value), 2)])
 
     # Calculate changes
-    if len(data) >= 2:
-        latest = data[-1][1]
-        prev = data[-2][1]
-        change_1d = round(((latest - prev) / prev) * 100, 2)
-    else:
-        change_1d = None
-
-    return {
-        "name": ticker_config["name"],
-        "unit": ticker_config["unit"],
-        "description": ticker_config["description"],
-        "data": data,
-        "latest": data[-1][1] if data else None,
-        "change_1d_pct": change_1d,
-    }
-
-
-def fetch_fred_series(fred, series_config):
-    """Fetch historical data from FRED."""
-    series = fred.get_series(series_config["id"])
-
-    # Convert to list of [timestamp_ms, value], dropping NaN values
-    data = []
-    for date, value in series.items():
-        if not pd.isna(value):
-            timestamp_ms = int(date.timestamp() * 1000)
-            data.append([timestamp_ms, round(float(value), 2)])
-
-    # Get latest value
     latest = data[-1][1] if data else None
+    change_1d = None
+    change_1w = None
+    change_1m = None
+
+    if len(data) >= 2:
+        prev = data[-2][1]
+        change_1d = round(((latest - prev) / prev) * 100, 2) if prev else None
+
+    if len(data) >= 6:  # ~1 week of trading days
+        prev_week = data[-6][1]
+        change_1w = round(((latest - prev_week) / prev_week) * 100, 2) if prev_week else None
+
+    if len(data) >= 22:  # ~1 month of trading days
+        prev_month = data[-22][1]
+        change_1m = round(((latest - prev_month) / prev_month) * 100, 2) if prev_month else None
 
     return {
-        "name": series_config["name"],
-        "unit": series_config["unit"],
-        "description": series_config["description"],
-        "fred_id": series_config["id"],
+        "name": config["name"],
+        "unit": config["unit"],
+        "description": config["description"],
+        "ticker": config["ticker"],
         "data": data,
         "latest": latest,
+        "change_1d_pct": change_1d,
+        "change_1w_pct": change_1w,
+        "change_1m_pct": change_1m,
     }
 
 
-def calculate_yield_curve_spread(metrics):
-    """Calculate 10Y-2Y Treasury spread (yield curve indicator)."""
+def calculate_yield_spread(metrics):
+    """Calculate 10Y-13W Treasury spread (yield curve indicator)."""
     t10 = metrics.get("treasury_10y", {}).get("latest")
     t2 = metrics.get("treasury_2y", {}).get("latest")
 
@@ -133,56 +117,34 @@ def calculate_yield_curve_spread(metrics):
         return {
             "spread": spread,
             "inverted": spread < 0,
-            "description": "10Y minus 2Y Treasury yield. Negative = inverted yield curve (recession signal)"
+            "description": "10Y minus 13W Treasury yield. Negative = inverted yield curve (recession signal)"
         }
     return None
 
 
 def main():
-    # Check for FRED API key
-    fred_api_key = os.environ.get("FRED_API_KEY")
-    if not fred_api_key:
-        raise ValueError(
-            "FRED_API_KEY environment variable not set. "
-            "Get a free API key at https://fred.stlouisfed.org/docs/api/api_key.html"
-        )
-
-    fred = Fred(api_key=fred_api_key)
-
-    # Import pandas here (fredapi uses it)
-    global pd
-    import pandas as pd
-
     metrics = {}
     errors = []
 
-    # Fetch market data from Yahoo Finance
-    for key, config in MARKET_TICKERS.items():
+    # Fetch all ticker data from Yahoo Finance
+    for key, config in TICKERS.items():
         try:
             print(f"Fetching {config['name']}...")
-            metrics[key] = fetch_market_data(config)
+            metrics[key] = fetch_ticker_data(config)
+            print(f"  Latest: {metrics[key]['latest']} {config['unit']}")
         except Exception as e:
-            errors.append({"source": key, "error": str(e)})
-            print(f"  Error: {e}")
-
-    # Fetch economic data from FRED
-    for key, config in FRED_SERIES.items():
-        try:
-            print(f"Fetching {config['name']}...")
-            metrics[key] = fetch_fred_series(fred, config)
-        except Exception as e:
-            errors.append({"source": key, "error": str(e)})
+            errors.append({"source": key, "ticker": config["ticker"], "error": str(e)})
             print(f"  Error: {e}")
 
     # Calculate derived metrics
-    yield_curve = calculate_yield_curve_spread(metrics)
+    yield_spread = calculate_yield_spread(metrics)
 
     # Build output
     output = {
         "generated": datetime.now(timezone.utc).isoformat(),
         "metrics": metrics,
         "summary": {
-            "yield_curve": yield_curve,
+            "yield_spread": yield_spread,
         },
         "errors": errors if errors else None,
     }
@@ -193,9 +155,9 @@ def main():
 
     print(f"\nData written to {OUTPUT_FILE}")
     print(f"Generated at: {output['generated']}")
-    if yield_curve:
-        status = "INVERTED" if yield_curve["inverted"] else "normal"
-        print(f"Yield curve: {yield_curve['spread']}% ({status})")
+    if yield_spread:
+        status = "INVERTED" if yield_spread["inverted"] else "normal"
+        print(f"Yield spread (10Y-13W): {yield_spread['spread']}% ({status})")
 
 
 if __name__ == "__main__":

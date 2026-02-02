@@ -88,14 +88,14 @@
 const CHART_COLORS = {
   spy: '#2563eb',
   btc: '#f59e0b',
-  cpi: '#dc2626',
-  unemployment: '#7c3aed',
-  job_openings: '#16a34a',
   treasury_10y: '#0891b2',
-  treasury_2y: '#6366f1'
+  treasury_2y: '#6366f1',
+  gold: '#eab308',
+  vix: '#dc2626',
+  dxy: '#16a34a'
 };
 
-const CHART_ORDER = ['spy', 'btc', 'treasury_10y', 'treasury_2y', 'cpi', 'unemployment', 'job_openings'];
+const CHART_ORDER = ['spy', 'btc', 'treasury_10y', 'treasury_2y', 'gold', 'vix', 'dxy'];
 
 function formatNumber(num, unit) {
   if (num === null || num === undefined) return 'N/A';
@@ -130,17 +130,17 @@ function createSummaryCard(key, metric, yieldCurve) {
   return card;
 }
 
-function createYieldCurveCard(yieldCurve) {
-  if (!yieldCurve) return null;
+function createYieldSpreadCard(yieldSpread) {
+  if (!yieldSpread) return null;
   const card = document.createElement('div');
-  card.className = 'summary-card' + (yieldCurve.inverted ? ' warning' : '');
+  card.className = 'summary-card' + (yieldSpread.inverted ? ' warning' : '');
 
-  const status = yieldCurve.inverted ? 'INVERTED' : 'Normal';
-  const statusClass = yieldCurve.inverted ? 'negative' : 'positive';
+  const status = yieldSpread.inverted ? 'INVERTED' : 'Normal';
+  const statusClass = yieldSpread.inverted ? 'negative' : 'positive';
 
   card.innerHTML = `
-    <div class="label">Yield Curve (10Y-2Y)</div>
-    <div class="value">${yieldCurve.spread.toFixed(2)}%</div>
+    <div class="label">Yield Spread (10Y-13W)</div>
+    <div class="value">${yieldSpread.spread.toFixed(2)}%</div>
     <div class="change"><span class="${statusClass}">${status}</span></div>
   `;
   return card;
@@ -233,9 +233,9 @@ async function loadDashboard() {
     const summaryDiv = document.getElementById('summary');
     summaryDiv.innerHTML = '';
 
-    // Add yield curve card first
-    if (data.summary?.yield_curve) {
-      const yieldCard = createYieldCurveCard(data.summary.yield_curve);
+    // Add yield spread card first
+    if (data.summary?.yield_spread) {
+      const yieldCard = createYieldSpreadCard(data.summary.yield_spread);
       if (yieldCard) summaryDiv.appendChild(yieldCard);
     }
 
