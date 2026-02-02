@@ -1,29 +1,46 @@
-# dismal
+# Dismal - Economic Dashboard
 
-Dismal is a lightweight RSS aggregator focused on quantitative finance, trading and machine learning news. The Python script fetches a handful of entries from each feed listed in `sources.txt` and stores them in `data.json`. The static `index.html` page displays the collected items as simple cards.
+A lightweight economic dashboard that fetches market data daily from Yahoo Finance, generating a static JSON file that powers a simple visualization page.
+
+**No API keys required.**
+
+## What It Shows
+
+| Metric | Ticker | Description |
+|--------|--------|-------------|
+| S&P 500 (SPY) | SPY | S&P 500 ETF |
+| Bitcoin | BTC-USD | Bitcoin price |
+| 10-Year Treasury | ^TNX | Long-term rates |
+| 13-Week T-Bill | ^IRX | Short-term rates |
+| Gold | GC=F | Gold futures |
+| VIX | ^VIX | Volatility/fear index |
+| US Dollar Index | DX-Y.NYB | Dollar strength |
+
+Plus a **yield spread** indicator (10Y - 13W) to flag potential inversions.
 
 ## Usage
-1. Install dependencies with `pip install -r requirements.txt`.
-2. Run `python dismal.py` to generate `data.json`.
-3. Open `index.html` in a browser to view the latest items.
 
-## Feed Sources
-A sample of the current feeds is listed below:
+### Local Development
 
-- NBER: <https://back.nber.org/rss/new.xml>
-- arXiv Econ: <http://export.arxiv.org/rss/econ>
-- arXiv CS: <http://export.arxiv.org/rss/cs>
-- arXiv Quant Finance: <http://export.arxiv.org/rss/q-fin>
-- Netflix Tech Blog: <https://netflixtechblog.com/feed>
-- Lyft Engineering: <https://eng.lyft.com/feed>
-- Spotify Engineering: <https://engineering.atspotify.com/rss>
-- GitHub Blog: <https://github.blog/feed>
-- HackerNews: <https://hnrss.org/frontpage>
-- NPR: <https://feeds.npr.org/1019/rss.xml>
-- Bloomberg Markets: <https://feeds.bloomberg.com/markets/news.rss>
-- FRED Blog: <https://fredblog.stlouisfed.org/feed>
-- JMLR: <https://www.jmlr.org/jmlr.xml>
-- SEC Trading Suspensions: <https://www.sec.gov/rss/litigation/suspensions.xml>
-- NASA News: <https://www.jpl.nasa.gov/feeds/news/>
+```bash
+pip install -r requirements.txt
+python dashboard.py
+# Open index.html in a browser
+```
 
-Additional feeds can be added to `sources.txt` as needed.
+### GitHub Actions (Automated)
+
+The workflow runs daily at 1 PM UTC and commits updated `data.json` to the repo. No configuration needed - just enable Actions on your fork.
+
+## Using with Claude
+
+The `data.json` file is designed to be easily consumable by LLMs. You can:
+- Paste the raw JSON URL into Claude chat
+- Ask questions like "Is the yield curve inverted? How has the VIX moved recently?"
+
+## Files
+
+- `dashboard.py` - Fetches data from Yahoo Finance
+- `index.html` - Static page with Chart.js visualizations
+- `data.json` - Generated output with all metrics and 2 years of history
+- `requirements.txt` - Python dependencies (just yfinance)

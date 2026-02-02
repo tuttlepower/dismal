@@ -1,41 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dismal Aggregator</title>
-<style>
-body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-.card { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 4px; }
-h2 { margin-top: 1.5em; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Economic Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+      color: #333;
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    h1 { margin: 0; font-size: 1.8em; }
+    .timestamp { color: #666; font-size: 0.9em; }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .summary-card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .summary-card .label { font-size: 0.85em; color: #666; margin-bottom: 5px; }
+    .summary-card .value { font-size: 1.5em; font-weight: 600; }
+    .summary-card .change { font-size: 0.9em; margin-top: 5px; }
+    .positive { color: #16a34a; }
+    .negative { color: #dc2626; }
+    .warning { background: #fef3c7; border-left: 4px solid #f59e0b; }
+
+    .charts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 20px;
+    }
+    .chart-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .chart-card h3 { margin: 0 0 15px 0; font-size: 1.1em; }
+    .chart-container { position: relative; height: 250px; }
+
+    .error { background: #fee2e2; color: #dc2626; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+    .loading { text-align: center; padding: 50px; color: #666; }
+
+    @media (max-width: 600px) {
+      .charts { grid-template-columns: 1fr; }
+      .chart-card { padding: 15px; }
+      .chart-container { height: 200px; }
+    }
+  </style>
 </head>
 <body>
-<h1>Dismal Aggregator</h1>
-<div id="content">Loading...</div>
+  <div class="container">
+    <header>
+      <h1>Economic Dashboard</h1>
+      <div class="timestamp" id="timestamp">Loading...</div>
+    </header>
+
+    <div id="errors"></div>
+    <div id="summary" class="summary"></div>
+    <div id="charts" class="charts">
+      <div class="loading">Loading data...</div>
+    </div>
+  </div>
+
 <script>
-fetch('data.json')
-  .then(r => r.json())
-  .then(data => {
-    const container = document.getElementById('content');
-    container.textContent = '';
-    data.feeds.forEach(feed => {
-      const header = document.createElement('h2');
-      header.textContent = feed.source;
-      container.appendChild(header);
-      feed.entries.forEach(entry => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `<a href="${entry.link}" target="_blank">${entry.title}</a>` +
-                         `<div>${entry.published || ''}</div>`;
-        container.appendChild(card);
-      });
-    });
-  })
-  .catch(err => {
-    document.getElementById('content').textContent = 'Failed to load data.';
-    console.error(err);
+const CHART_COLORS = {
+  spy: '#2563eb',
+  btc: '#f59e0b',
+  treasury_10y: '#0891b2',
+  treasury_2y: '#6366f1',
+  gold: '#eab308',
+  vix: '#dc2626',
+  dxy: '#16a34a'
+};
+
+const CHART_ORDER = ['spy', 'btc', 'treasury_10y', 'treasury_2y', 'gold', 'vix', 'dxy'];
+
+function formatNumber(num, unit) {
+  if (num === null || num === undefined) return 'N/A';
+  if (unit === '%') return num.toFixed(2) + '%';
+  if (unit === 'USD') return '$' + num.toLocaleString();
+  if (unit === 'Thousands') return (num / 1000).toFixed(1) + 'M';
+  if (unit === 'Index') return num.toFixed(1);
+  return num.toLocaleString();
+}
+
+function formatChange(change) {
+  if (change === null || change === undefined) return '';
+  const sign = change >= 0 ? '+' : '';
+  const cls = change >= 0 ? 'positive' : 'negative';
+  return `<span class="${cls}">${sign}${change.toFixed(2)}%</span>`;
+}
+
+function createSummaryCard(key, metric, yieldCurve) {
+  const card = document.createElement('div');
+  card.className = 'summary-card';
+
+  let changeHtml = '';
+  if (metric.change_1d_pct !== undefined) {
+    changeHtml = `<div class="change">1d: ${formatChange(metric.change_1d_pct)}</div>`;
+  }
+
+  card.innerHTML = `
+    <div class="label">${metric.name}</div>
+    <div class="value">${formatNumber(metric.latest, metric.unit)}</div>
+    ${changeHtml}
+  `;
+  return card;
+}
+
+function createYieldSpreadCard(yieldSpread) {
+  if (!yieldSpread) return null;
+  const card = document.createElement('div');
+  card.className = 'summary-card' + (yieldSpread.inverted ? ' warning' : '');
+
+  const status = yieldSpread.inverted ? 'INVERTED' : 'Normal';
+  const statusClass = yieldSpread.inverted ? 'negative' : 'positive';
+
+  card.innerHTML = `
+    <div class="label">Yield Spread (10Y-13W)</div>
+    <div class="value">${yieldSpread.spread.toFixed(2)}%</div>
+    <div class="change"><span class="${statusClass}">${status}</span></div>
+  `;
+  return card;
+}
+
+function createChart(key, metric) {
+  const card = document.createElement('div');
+  card.className = 'chart-card';
+
+  const canvas = document.createElement('canvas');
+  canvas.id = `chart-${key}`;
+
+  card.innerHTML = `<h3>${metric.name}</h3>`;
+  const container = document.createElement('div');
+  container.className = 'chart-container';
+  container.appendChild(canvas);
+  card.appendChild(container);
+
+  return { card, canvas };
+}
+
+function renderChart(canvas, metric, color) {
+  const data = metric.data.map(([ts, val]) => ({ x: ts, y: val }));
+
+  new Chart(canvas, {
+    type: 'line',
+    data: {
+      datasets: [{
+        data: data,
+        borderColor: color,
+        backgroundColor: color + '20',
+        fill: true,
+        tension: 0.1,
+        pointRadius: 0,
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => formatNumber(ctx.parsed.y, metric.unit)
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'time',
+          time: { unit: 'month' },
+          grid: { display: false }
+        },
+        y: {
+          grid: { color: '#eee' },
+          ticks: {
+            callback: (val) => formatNumber(val, metric.unit)
+          }
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index'
+      }
+    }
   });
+}
+
+async function loadDashboard() {
+  try {
+    const response = await fetch('data.json');
+    if (!response.ok) throw new Error('Failed to load data.json');
+    const data = await response.json();
+
+    // Update timestamp
+    const timestamp = new Date(data.generated);
+    document.getElementById('timestamp').textContent =
+      `Updated: ${timestamp.toLocaleDateString()} ${timestamp.toLocaleTimeString()}`;
+
+    // Show errors if any
+    const errorsDiv = document.getElementById('errors');
+    if (data.errors && data.errors.length > 0) {
+      errorsDiv.innerHTML = `<div class="error">
+        <strong>Some data failed to load:</strong> ${data.errors.map(e => e.source).join(', ')}
+      </div>`;
+    }
+
+    // Render summary cards
+    const summaryDiv = document.getElementById('summary');
+    summaryDiv.innerHTML = '';
+
+    // Add yield spread card first
+    if (data.summary?.yield_spread) {
+      const yieldCard = createYieldSpreadCard(data.summary.yield_spread);
+      if (yieldCard) summaryDiv.appendChild(yieldCard);
+    }
+
+    // Add metric summary cards
+    for (const key of CHART_ORDER) {
+      const metric = data.metrics[key];
+      if (metric) {
+        summaryDiv.appendChild(createSummaryCard(key, metric));
+      }
+    }
+
+    // Render charts
+    const chartsDiv = document.getElementById('charts');
+    chartsDiv.innerHTML = '';
+
+    for (const key of CHART_ORDER) {
+      const metric = data.metrics[key];
+      if (metric && metric.data && metric.data.length > 0) {
+        const { card, canvas } = createChart(key, metric);
+        chartsDiv.appendChild(card);
+        renderChart(canvas, metric, CHART_COLORS[key] || '#333');
+      }
+    }
+
+  } catch (err) {
+    console.error(err);
+    document.getElementById('charts').innerHTML =
+      `<div class="error">Failed to load dashboard data: ${err.message}</div>`;
+  }
+}
+
+loadDashboard();
 </script>
 </body>
 </html>
