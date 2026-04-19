@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-18T13:28:01.729432+00:00",
+  "generated": "2026-04-19T13:27:27.864414+00:00",
   "metrics": {
     "spy": {
       "name": "S&P 500 ETF (SPY)",
@@ -2023,10 +2023,6 @@
       "description": "Bitcoin USD",
       "ticker": "BTC-USD",
       "data": [
-        [
-          1713398400000,
-          63512.75
-        ],
         [
           1713484800000,
           63843.57
@@ -4945,13 +4941,17 @@
         ],
         [
           1776470400000,
-          76170.66
+          75726.21
+        ],
+        [
+          1776556800000,
+          76150.32
         ]
       ],
-      "latest": 76170.66,
-      "change_1d_pct": -1.24,
-      "change_1w_pct": 2.26,
-      "change_1m_pct": 14.85
+      "latest": 76150.32,
+      "change_1d_pct": 0.56,
+      "change_1w_pct": 2.65,
+      "change_1m_pct": 15.46
     },
     "treasury_10y": {
       "name": "10-Year Treasury Yield",
@@ -9000,10 +9000,6 @@
       "ticker": "GC=F",
       "data": [
         [
-          1713412800000,
-          2382.3
-        ],
-        [
           1713499200000,
           2398.4
         ],
@@ -11009,13 +11005,13 @@
         ],
         [
           1776398400000,
-          4857.6
+          4879.6
         ]
       ],
-      "latest": 4857.6,
-      "change_1d_pct": 1.51,
-      "change_1w_pct": 2.01,
-      "change_1m_pct": -0.66
+      "latest": 4879.6,
+      "change_1d_pct": 1.97,
+      "change_1w_pct": 2.47,
+      "change_1m_pct": -0.21
     },
     "vix": {
       "name": "VIX (Volatility Index)",
@@ -13043,10 +13039,6 @@
       "description": "US Dollar Index - dollar strength",
       "ticker": "DX-Y.NYB",
       "data": [
-        [
-          1713412800000,
-          106.15
-        ],
         [
           1713499200000,
           106.15
