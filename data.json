@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-01T15:04:19.263797+00:00",
+  "generated": "2026-06-02T14:25:59.928378+00:00",
   "metrics": {
     "spy": {
       "name": "S&P 500 ETF (SPY)",
@@ -769,7 +769,7 @@
         ],
         [
           1741323600000,
-          567.68
+          567.69
         ],
         [
           1741579200000,
@@ -2005,13 +2005,17 @@
         ],
         [
           1780286400000,
-          755.57
+          758.54
+        ],
+        [
+          1780372800000,
+          757.91
         ]
       ],
-      "latest": 755.57,
-      "change_1d_pct": -0.12,
-      "change_1w_pct": 1.33,
-      "change_1m_pct": 5.14
+      "latest": 757.91,
+      "change_1d_pct": -0.08,
+      "change_1w_pct": 0.98,
+      "change_1m_pct": 5.17
     },
     "btc": {
       "name": "Bitcoin",
@@ -2019,10 +2023,6 @@
       "description": "Bitcoin USD",
       "ticker": "BTC-USD",
       "data": [
-        [
-          1717200000000,
-          67706.94
-        ],
         [
           1717286400000,
           67751.6
@@ -4941,13 +4941,17 @@
         ],
         [
           1780272000000,
-          71489.24
+          71319.77
+        ],
+        [
+          1780358400000,
+          67869.73
         ]
       ],
-      "latest": 71489.24,
-      "change_1d_pct": -2.84,
-      "change_1w_pct": -3.84,
-      "change_1m_pct": -12.53
+      "latest": 67869.73,
+      "change_1d_pct": -4.84,
+      "change_1w_pct": -7.71,
+      "change_1m_pct": -15.67
     },
     "treasury_10y": {
       "name": "10-Year Treasury Yield",
@@ -6953,13 +6957,17 @@
         ],
         [
           1780290000000,
-          4.51
+          4.47
+        ],
+        [
+          1780376400000,
+          4.45
         ]
       ],
-      "latest": 4.51,
-      "change_1d_pct": 1.35,
-      "change_1w_pct": -1.1,
-      "change_1m_pct": 2.73
+      "latest": 4.45,
+      "change_1d_pct": -0.45,
+      "change_1w_pct": -0.89,
+      "change_1m_pct": 1.6
     },
     "treasury_2y": {
       "name": "13-Week Treasury Bill",
@@ -8965,13 +8973,17 @@
         ],
         [
           1780290000000,
-          3.61
+          3.62
+        ],
+        [
+          1780376400000,
+          3.62
         ]
       ],
-      "latest": 3.61,
-      "change_1d_pct": 0.56,
-      "change_1w_pct": 0.56,
-      "change_1m_pct": 0.56
+      "latest": 3.62,
+      "change_1d_pct": 0.0,
+      "change_1w_pct": 1.12,
+      "change_1m_pct": 1.12
     },
     "gold": {
       "name": "Gold",
@@ -10985,13 +10997,17 @@
         ],
         [
           1780286400000,
-          4484.2
+          4475.2
+        ],
+        [
+          1780372800000,
+          4531.8
         ]
       ],
-      "latest": 4484.2,
-      "change_1d_pct": -1.67,
-      "change_1w_pct": -0.81,
-      "change_1m_pct": -2.83
+      "latest": 4531.8,
+      "change_1d_pct": 1.26,
+      "change_1w_pct": 0.7,
+      "change_1m_pct": -2.12
     },
     "vix": {
       "name": "VIX (Volatility Index)",
@@ -13002,12 +13018,16 @@
         [
           1780290000000,
           16.05
+        ],
+        [
+          1780376400000,
+          16.03
         ]
       ],
-      "latest": 16.05,
-      "change_1d_pct": 4.77,
-      "change_1w_pct": -3.25,
-      "change_1m_pct": -5.53
+      "latest": 16.03,
+      "change_1d_pct": -0.12,
+      "change_1w_pct": -5.76,
+      "change_1m_pct": -12.36
     },
     "dxy": {
       "name": "US Dollar Index",
@@ -15021,18 +15041,22 @@
         ],
         [
           1780286400000,
-          99.33
+          99.2
+        ],
+        [
+          1780372800000,
+          99.14
         ]
       ],
-      "latest": 99.33,
-      "change_1d_pct": 0.42,
-      "change_1w_pct": 0.01,
-      "change_1m_pct": 1.27
+      "latest": 99.14,
+      "change_1d_pct": -0.06,
+      "change_1w_pct": -0.03,
+      "change_1m_pct": 0.95
     }
   },
   "summary": {
     "yield_spread": {
-      "spread": 0.9,
+      "spread": 0.83,
       "inverted": false,
       "description": "10Y minus 13W Treasury yield. Negative = inverted yield curve (recession signal)"
     }
