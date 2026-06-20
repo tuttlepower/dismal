@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-19T14:02:46.743034+00:00",
+  "generated": "2026-06-20T13:34:16.039168+00:00",
   "metrics": {
     "spy": {
       "name": "S&P 500 ETF (SPY)",
@@ -2023,10 +2023,6 @@
       "description": "Bitcoin USD",
       "ticker": "BTC-USD",
       "data": [
-        [
-          1718755200000,
-          64960.3
-        ],
         [
           1718841600000,
           64828.66
@@ -4941,13 +4937,17 @@
         ],
         [
           1781827200000,
-          63166.85
+          63540.84
+        ],
+        [
+          1781913600000,
+          63317.72
         ]
       ],
-      "latest": 63166.85,
-      "change_1d_pct": 0.43,
-      "change_1w_pct": -1.95,
-      "change_1m_pct": -14.1
+      "latest": 63317.72,
+      "change_1d_pct": -0.35,
+      "change_1w_pct": -3.64,
+      "change_1m_pct": -13.7
     },
     "treasury_10y": {
       "name": "10-Year Treasury Yield",
@@ -10969,13 +10969,13 @@
         ],
         [
           1781841600000,
-          4175.5
+          4172.9
         ]
       ],
-      "latest": 4175.5,
-      "change_1d_pct": -1.15,
-      "change_1w_pct": -0.94,
-      "change_1m_pct": -7.85
+      "latest": 4172.9,
+      "change_1d_pct": -1.21,
+      "change_1w_pct": -1.0,
+      "change_1m_pct": -7.91
     },
     "vix": {
       "name": "VIX (Volatility Index)",
@@ -12990,16 +12990,12 @@
         [
           1781758800000,
           16.4
-        ],
-        [
-          1781845200000,
-          16.84
         ]
       ],
-      "latest": 16.84,
-      "change_1d_pct": 2.68,
-      "change_1w_pct": -4.75,
-      "change_1m_pct": 0.48
+      "latest": 16.4,
+      "change_1d_pct": -11.06,
+      "change_1w_pct": -15.64,
+      "change_1m_pct": -5.96
     },
     "dxy": {
       "name": "US Dollar Index",
@@ -15021,13 +15017,13 @@
         ],
         [
           1781841600000,
-          100.8
+          100.85
         ]
       ],
-      "latest": 100.8,
-      "change_1d_pct": -0.05,
-      "change_1w_pct": 1.05,
-      "change_1m_pct": 1.71
+      "latest": 100.85,
+      "change_1d_pct": 0.0,
+      "change_1w_pct": 1.1,
+      "change_1m_pct": 1.76
     }
   },
   "summary": {
