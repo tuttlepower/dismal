@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27T15:39:00.812035+00:00",
+  "generated": "2026-07-28T15:16:02.741391+00:00",
   "metrics": {
     "spy": {
       "name": "S&P 500 ETF (SPY)",
@@ -433,7 +433,7 @@
         ],
         [
           1735275600000,
-          584.99
+          585.0
         ],
         [
           1735534800000,
@@ -2005,13 +2005,17 @@
         ],
         [
           1785124800000,
-          736.79
+          739.09
+        ],
+        [
+          1785211200000,
+          739.56
         ]
       ],
-      "latest": 736.79,
-      "change_1d_pct": -0.29,
-      "change_1w_pct": -0.71,
-      "change_1m_pct": 0.34
+      "latest": 739.56,
+      "change_1d_pct": 0.06,
+      "change_1w_pct": -1.17,
+      "change_1m_pct": 1.45
     },
     "btc": {
       "name": "Bitcoin",
@@ -2019,10 +2023,6 @@
       "description": "Bitcoin USD",
       "ticker": "BTC-USD",
       "data": [
-        [
-          1722038400000,
-          67813.34
-        ],
         [
           1722124800000,
           68255.87
@@ -4941,13 +4941,17 @@
         ],
         [
           1785110400000,
-          64440.47
+          63724.9
+        ],
+        [
+          1785196800000,
+          63331.58
         ]
       ],
-      "latest": 64440.47,
-      "change_1d_pct": -1.38,
-      "change_1w_pct": -2.51,
-      "change_1m_pct": 0.7
+      "latest": 63331.58,
+      "change_1d_pct": -0.62,
+      "change_1w_pct": -2.63,
+      "change_1m_pct": 0.05
     },
     "treasury_10y": {
       "name": "10-Year Treasury Yield",
@@ -6954,12 +6958,16 @@
         [
           1785128400000,
           4.64
+        ],
+        [
+          1785214800000,
+          4.62
         ]
       ],
-      "latest": 4.64,
-      "change_1d_pct": -0.85,
-      "change_1w_pct": 0.87,
-      "change_1m_pct": 5.69
+      "latest": 4.62,
+      "change_1d_pct": -0.43,
+      "change_1w_pct": -0.22,
+      "change_1m_pct": 5.72
     },
     "treasury_2y": {
       "name": "13-Week Treasury Bill",
@@ -8965,13 +8973,17 @@
         ],
         [
           1785128400000,
-          3.82
+          3.8
+        ],
+        [
+          1785214800000,
+          3.78
         ]
       ],
-      "latest": 3.82,
-      "change_1d_pct": 0.26,
-      "change_1w_pct": 3.24,
-      "change_1m_pct": 3.8
+      "latest": 3.78,
+      "change_1d_pct": -0.53,
+      "change_1w_pct": 1.34,
+      "change_1m_pct": 3.28
     },
     "gold": {
       "name": "Gold",
@@ -10985,13 +10997,17 @@
         ],
         [
           1785124800000,
-          4078.0
+          4074.5
+        ],
+        [
+          1785211200000,
+          4023.4
         ]
       ],
-      "latest": 4078.0,
-      "change_1d_pct": 0.26,
-      "change_1w_pct": 1.69,
-      "change_1m_pct": 1.18
+      "latest": 4023.4,
+      "change_1d_pct": -1.25,
+      "change_1w_pct": -1.17,
+      "change_1m_pct": -1.36
     },
     "vix": {
       "name": "VIX (Volatility Index)",
@@ -13001,13 +13017,17 @@
         ],
         [
           1785128400000,
-          19.27
+          18.67
+        ],
+        [
+          1785214800000,
+          18.46
         ]
       ],
-      "latest": 19.27,
-      "change_1d_pct": 3.71,
-      "change_1w_pct": 3.32,
-      "change_1m_pct": 2.01
+      "latest": 18.46,
+      "change_1d_pct": -1.12,
+      "change_1w_pct": 8.27,
+      "change_1m_pct": 0.27
     },
     "dxy": {
       "name": "US Dollar Index",
@@ -15020,19 +15040,19 @@
           101.47
         ],
         [
-          1785124800000,
-          101.46
+          1785211200000,
+          101.44
         ]
       ],
-      "latest": 101.46,
-      "change_1d_pct": -0.01,
-      "change_1w_pct": 0.47,
-      "change_1m_pct": 0.03
+      "latest": 101.44,
+      "change_1d_pct": -0.03,
+      "change_1w_pct": 0.45,
+      "change_1m_pct": 0.01
     }
   },
   "summary": {
     "yield_spread": {
-      "spread": 0.82,
+      "spread": 0.84,
       "inverted": false,
       "description": "10Y minus 13W Treasury yield. Negative = inverted yield curve (recession signal)"
     }
