@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20T20:53:35.441766+00:00",
+  "generated": "2026-11-21T19:54:09.879473+00:00",
   "metrics": {
     "spy": {
       "name": "S&P 500 ETF (SPY)",
@@ -7,10 +7,6 @@
       "description": "SPDR S&P 500 ETF Trust",
       "ticker": "SPY",
       "data": [
-        [
-          1732078800000,
-          577.18
-        ],
         [
           1732165200000,
           580.28
@@ -229,7 +225,7 @@
         ],
         [
           1739336400000,
-          591.74
+          591.73
         ],
         [
           1739422800000,
@@ -617,7 +613,7 @@
         ],
         [
           1751515200000,
-          616.96
+          616.95
         ],
         [
           1751860800000,
@@ -2013,13 +2009,13 @@
         ],
         [
           1795150800000,
-          690.53
+          689.81
         ]
       ],
-      "latest": 690.53,
-      "change_1d_pct": -3.54,
-      "change_1w_pct": -8.46,
-      "change_1m_pct": -9.61
+      "latest": 689.81,
+      "change_1d_pct": -3.64,
+      "change_1w_pct": -8.56,
+      "change_1m_pct": -9.71
     },
     "btc": {
       "name": "Bitcoin",
@@ -2027,10 +2023,6 @@
       "description": "Bitcoin USD",
       "ticker": "BTC-USD",
       "data": [
-        [
-          1732060800000,
-          94339.49
-        ],
         [
           1732147200000,
           98504.73
@@ -4949,13 +4941,17 @@
         ],
         [
           1795132800000,
-          58314.79
+          58798.98
+        ],
+        [
+          1795219200000,
+          60254.48
         ]
       ],
-      "latest": 58314.79,
-      "change_1d_pct": -5.79,
-      "change_1w_pct": -10.7,
-      "change_1m_pct": -24.46
+      "latest": 60254.48,
+      "change_1d_pct": 2.48,
+      "change_1w_pct": -7.09,
+      "change_1m_pct": -22.19
     },
     "treasury_10y": {
       "name": "10-Year Treasury Yield",
@@ -9004,10 +9000,6 @@
       "ticker": "GC=F",
       "data": [
         [
-          1732078800000,
-          2651.7
-        ],
-        [
           1732165200000,
           2674.9
         ],
@@ -11017,13 +11009,13 @@
         ],
         [
           1795150800000,
-          3511.2
+          3515.4
         ]
       ],
-      "latest": 3511.2,
-      "change_1d_pct": -4.73,
-      "change_1w_pct": -9.65,
-      "change_1m_pct": -13.53
+      "latest": 3515.4,
+      "change_1d_pct": -4.62,
+      "change_1w_pct": -9.54,
+      "change_1m_pct": -13.42
     },
     "vix": {
       "name": "VIX (Volatility Index)",
@@ -13045,13 +13037,13 @@
         ],
         [
           1795154400000,
-          37.7
+          35.89
         ]
       ],
-      "latest": 37.7,
-      "change_1d_pct": 32.56,
-      "change_1w_pct": 95.34,
-      "change_1m_pct": 98.11
+      "latest": 35.89,
+      "change_1d_pct": 26.2,
+      "change_1w_pct": 85.96,
+      "change_1m_pct": 88.6
     },
     "dxy": {
       "name": "US Dollar Index",
@@ -13059,10 +13051,6 @@
       "description": "US Dollar Index - dollar strength",
       "ticker": "DX-Y.NYB",
       "data": [
-        [
-          1732078800000,
-          106.68
-        ],
         [
           1732165200000,
           106.97
@@ -15073,13 +15061,13 @@
         ],
         [
           1795150800000,
-          103.85
+          103.81
         ]
       ],
-      "latest": 103.85,
-      "change_1d_pct": -0.05,
-      "change_1w_pct": 0.43,
-      "change_1m_pct": 2.2
+      "latest": 103.81,
+      "change_1d_pct": -0.09,
+      "change_1w_pct": 0.39,
+      "change_1m_pct": 2.17
     }
   },
   "summary": {
